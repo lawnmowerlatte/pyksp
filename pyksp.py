@@ -17,6 +17,8 @@ def _get_apistrings_read(base, vessel):
             vessel.current_values[item]=result[item]
         except KeyError:
             pass
+        except UnboundLocalError:
+            pass
 
 def _fetch_parallel(base, active_vessel):
     """this thread is run in the backgroun, and contiunously starts new connection threads"""
