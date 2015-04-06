@@ -163,6 +163,7 @@ class ActiveVessel:
     "throttle_full":"f.throttleFull",
     "throttle_up":"f.throttleUp",
     "throttle_down":"f.throttleDown",
+    "set_throttle":"f.setThrottle",
 
     "gear":"f.gear",
     "brake":"f.brake",
@@ -208,8 +209,10 @@ class ActiveVessel:
         
     def run_command(self, string, value=None):
         """Run a command, constructing a querystring from the API keys and set a specific value"""
-        if not value is None:
+        if value is not None:
             value = "[" + str(value) + "]"
+        else:
+            value = ""
         self.raw_run_command("x="+self.apistrings_write[string]+value)
         return True
 
